@@ -10,6 +10,7 @@ zh-CN:
         current_sign_in_at: "最近登录于"
         current_sign_in_ip: "最近登录 IP"
         email: "电子邮箱"
+        nickname: "昵称"
         encrypted_password: "密码被加密"
         failed_attempts: "失败尝试"
         last_sign_in_at: "最后登录于"
