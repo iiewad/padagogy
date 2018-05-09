@@ -1,0 +1,41 @@
+<% provide(:title, '文章') %>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="http://www.bootcss.com/p/layoutit/img/1.jpg" alt="...">
+      <div class="carousel-caption">
+        <h3>...</h3>
+        <p>...</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://www.bootcss.com/p/layoutit/img/1.jpg" alt="...">
+      <div class="carousel-caption">
+        <h3>...</h3>
+        <p>...</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="posts">
+<% @posts.each do |post| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h3><%= link_to post.title, post_path(post.id), class: 'post-title' %></h3>
+      <p><%= link_to post.summary, post_path(post.id), class: 'post-summary' %></p>
+    </div>
+  </div>
+<% end %>
+<%= paginate @posts %>
+</div>

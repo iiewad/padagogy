@@ -100,3 +100,46 @@ input {
   height: auto !important;
 }
 
+/* posts */
+
+.posts {
+  margin-top: 30px;
+  .post-title, .post-summary {
+    color: #333333;
+    &:hover {
+      color: #2E94B9;
+    }
+  }
+}
+
+.blog-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.blog-title {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 60px;
+  font-weight: normal;
+}
+.blog-description {
+  font-size: 20px;
+  color: #999;
+}
+
+.blog-post {
+  margin-bottom: 60px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.5;
+  .blog-post-title {
+    margin-bottom: 5px;
+    font-size: 40px;
+  }
+  .blog-post-meta {
+    margin-bottom: 20px;
+    color: #999;
+  }
+}
+
