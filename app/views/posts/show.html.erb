@@ -8,7 +8,9 @@
 <div class="blog-post">
   <h2 class="blog-post-title"><%= @post.title %></h2>
   <p class="blog-post-meta"><%= formate_date(@post.created_at) %> <%= link_to @post.user.nickname, '#' %></p>
-  <%= @post.body %>
+  <p><%= @post.summary %></p>
+  <hr>
+  <%= raw @post.body %>
 </div>
 
 <nav>
