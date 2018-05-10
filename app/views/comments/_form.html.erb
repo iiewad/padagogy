@@ -1,14 +1,19 @@
 <% if current_user %>
-  <%= form_for @new_comment do |f| %>
-    <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
-    <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
-    <div class="field form-group">
-      <%= f.text_area :body, class: 'form-control' %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= gravatar_for(current_user, size: 24) %> <%= current_user.nickname %></div>
+    <div class="panel-body">
+      <%= form_for @new_comment do |f| %>
+        <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+        <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+        <div class="field form-group">
+          <%= f.text_area :body, class: 'form-control' %>
+        </div>
+        <div class="field form-group">
+          <%= submit_tag "提交", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
-    <div class="field form-group">
-      <%= submit_tag "提交", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  </div>
 <% else %>
   <div class="login">
     <%= link_to '登入后发表评论', new_session_path(:user) %>
