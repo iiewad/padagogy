@@ -19,6 +19,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'by_star', git: "git://github.com/radar/by_star"
+gem "figaro"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -38,6 +39,11 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-qiniu', '~> 1.1.5'
+# If you need to use locales other than English
+gem 'carrierwave-i18n'
+gem "mini_magick"
 
 gem 'activeadmin'
 

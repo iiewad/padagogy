@@ -21,3 +21,9 @@
 /yarn-error.log
 
 .byebug_history
+
+/public/system
+/public/uploads
+
+/config/application.yml
+

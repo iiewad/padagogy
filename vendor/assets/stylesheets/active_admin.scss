@@ -19,3 +19,16 @@
   width: 79.5% !important;
   overflow: hidden;
 }
+
+.status_tag {
+  background: darken($secondary-color, 15%);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 3px 5px 2px 5px;
+  font-size: 0.8em;
+
+  &.hot { background: #6090DB }
+  &.normal  { background: grey }
+
+}
