@@ -15,4 +15,6 @@ class Post < ApplicationRecord
 
   scope :normal, -> { where(status: 0) }
   scope :hot, -> { where(status: 1) }
+
+  acts_as_commentable
 end

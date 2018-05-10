@@ -22,3 +22,6 @@
     <% end %>
   </ul>
 </nav>
+
+<%= render partial: "comments/template", locals: {commentable: @post, new_comment: @new_comment} %>
+

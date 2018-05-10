@@ -1,0 +1,16 @@
+<% if current_user %>
+  <%= form_for @new_comment do |f| %>
+    <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+    <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+    <div class="field form-group">
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+    <div class="field form-group">
+      <%= submit_tag "提交", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="login">
+    <%= link_to '登入后发表评论', new_session_path(:user) %>
+  </div>
+<% end %>

@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'acts_as_commentable_with_threading'
+
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-qiniu', '~> 1.1.5'
 # If you need to use locales other than English
