@@ -170,3 +170,48 @@ input {
 .gravatar_edit {
   margin-top: 15px;
 }
+
+/* app */
+.panel-body {
+  border: 1px solid #eaeaea;
+}
+.app-lists {
+  .app-item {
+    border-left: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    .media {
+      padding: 10px 0;
+      .media-body {
+        color: #bcbcbc;
+      }
+      .media-heading {
+        a {
+          color: #333333;
+        }
+      }
+    }
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+    }
+  }
+}
+
+/* show app */
+.app-item-header {
+  .media {
+    .media-body {
+      width: 50%;
+      float: left;
+    }
+    .qr_code {
+      text-align: center;
+      width: 30%;
+      float: left;
+      .download-text {
+        color: #ababab;
+      }
+    }
+  }
+}

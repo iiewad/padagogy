@@ -1,0 +1,27 @@
+<% provide(:title, 'Apps') %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Apps</h3>
+  </div>
+  <div class="panel-body">
+    <div class="splite"></div>
+    <div class="app-lists row">
+      <% @apps.each do |app| %>
+        <div class="app-item col-xs-4 col-md-4">
+          <div class="media">
+            <%= link_to image_tag(raw app.logo), app_path(app.id), class: 'pull-left' %>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to app.name, app_path(app.id) %>
+              </h4>
+              <%= app.size %>
+              <!-- <p><%#= app.company %></p> -->
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

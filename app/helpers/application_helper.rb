@@ -19,7 +19,7 @@ module ApplicationHelper
   def navigation_data
     {
       home: { text: '首页', path: root_path },
-      apps: { text: 'App', path: root_path },
+      apps: { text: 'App', path: apps_path },
       posts: { text: '评测', path: posts_path },
       users: user_nav_state
     }

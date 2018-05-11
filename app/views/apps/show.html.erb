@@ -1,0 +1,33 @@
+<% provide(:title, @app.name) %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="app-item-header">
+      <div class="media">
+        <%= link_to image_tag(raw @app.logo), app_path(@app.id), class: 'pull-left' %>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= @app.name %>
+          </h4>
+          <h6> <%= @app.size %> </h6>
+          <h6> <%= @app.company %> </h6>
+        </div>
+        <div class="qr_code">
+          <%= image_tag((raw @app.qr_code), size: "80x80", alt: @app.name) %>
+          <div class="download-text">
+            微信扫一扫下载
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <h3>
+      应用信息
+    </h3>
+    <p>
+      <%= @app.describe %>
+    </p>
+  </div>
+</div>

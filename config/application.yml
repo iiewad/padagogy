@@ -5,6 +5,7 @@ default: &default
   WEB_HOST: 'localhost'
   QINIU_AK: 'KoHsIl4VZfafoyNw8K--EBUP91ftuL4KMyuFNIpu'
   QINIU_SK: 'k1_Kc1VUuWZ9iqEoFB_neuW8rl2OUEKktjEMaP35'
+  FILE_NAME: 'apps.xls'
 
 development:
   <<: *default
