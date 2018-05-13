@@ -1,27 +1,179 @@
 <% provide(:title, 'Apps') %>
 
 <div class="panel panel-default">
+  <div class="panel-body category-panel">
+    <div class="padagogy-category">
+      <ul class="category">
+        <li v-for="(item, index) in categoriesList.padagogy">
+          <a href="javascript:void(0);"
+             class="label label-default"
+             :class="{'label-primary': selectedCategoryId.padagogyCategory.includes(item.id)}"
+             @click="selectedCategory('padagogyCategory', item.id)"
+             :id="item.id"
+             >
+             {{item.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="subject-category">
+      <ul class="category">
+        <li v-for="(item, index) in categoriesList.subject">
+          <a href="javascript:void(0);"
+             class="label label-default"
+             :class="{'label-primary': selectedCategoryId.subjectCategory.includes(item.id)}"
+             @click="selectedCategory('subjectCategory', item.id)"
+             :id="item.id"
+             >
+             {{item.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="grade-category">
+      <ul class="category">
+        <li v-for="(item, index) in categoriesList.grade">
+          <a href="javascript:void(0);"
+             class="label label-default"
+             :class="{'label-primary': selectedCategoryId.gradeCategory.includes(item.id)}"
+             @click="selectedCategory('gradeCategory', item.id)"
+             :id="item.id"
+             >
+             {{item.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Apps</h3>
   </div>
   <div class="panel-body">
     <div class="splite"></div>
     <div class="app-lists row">
-      <% @apps.each do |app| %>
-        <div class="app-item col-xs-4 col-md-4">
+        <div class="app-item col-xs-4 col-md-4" v-for="item in appsList">
           <div class="media">
-            <%= link_to image_tag(raw app.logo), app_path(app.id), class: 'pull-left' %>
+            <a :href="'/apps/' + item.id" class="pull-left">
+              <img :src="item.logo" />
+            </a>
             <div class="media-body">
               <h4 class="media-heading">
-                <%= link_to app.name, app_path(app.id) %>
+                <%#= link_to app.name, app_path(app.id) %>
+                <a :href="'/apps/' + item.id">{{item.name}}</a>
               </h4>
-              <%= app.size %>
+              {{item.size}}
               <!-- <p><%#= app.company %></p> -->
             </div>
           </div>
         </div>
-      <% end %>
     </div>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  Array.prototype.indexOf = function(val) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i] == val) return i;
+    }
+    return -1;
+  };
+
+  Array.prototype.remove = function(val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+      this.splice(index, 1);
+    }
+  };
+
+  var filter = new Vue({
+    el: '.category-panel',
+    data: {
+      message: 'category',
+      categoriesList: {},
+      selectedCategoryId: {
+        'padagogyCategory': [],
+        'subjectCategory': [],
+        'gradeCategory': []
+      }
+    },
+    methods: {
+      filterApps: function () {
+        console.log('Start Filter Apps');
+        var _self = this;
+        var params = {
+          'padagogy': _self.selectedCategoryId.padagogyCategory,
+          'subject': _self.selectedCategoryId.subjectCategory,
+          'grade': _self.selectedCategoryId.gradeCategory
+        }
+        $.ajax({
+          url:'apps/apps_category',
+          headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+          type: 'POST',
+          data: params,
+          success: function(res) {
+            appsList._data.appsList = res.data;
+          }
+        });
+      },
+      selectedCategory: function (categoryFlag, categoryId) {
+        _self = this;
+        console.log(categoryId);
+        if(_self.selectedCategoryId[categoryFlag].includes(categoryId)) {
+          _self.selectedCategoryId[categoryFlag].remove(categoryId)
+        }
+        else {
+          _self.selectedCategoryId[categoryFlag].push(categoryId);
+        }
+
+        setTimeout(function(){ _self.filterApps() }, 1000);
+      },
+      showCategoriesList: function () {
+        _self = this;
+        $.ajax({
+          url: 'apps/category',
+          headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+          type: 'GET',
+          data: '',
+          success: function(res) {
+            _self.categoriesList = res.data;
+          }
+        });
+      }
+    },
+    mounted() {
+      this.showCategoriesList();
+    }
+  });
+
+  var appsList = new Vue({
+    el: '.app-lists',
+    data: {
+      message: 'Hello Vue',
+      appsList: {}
+    },
+
+    methods: {
+     showAppsList: function (params = '') {
+        var _self = this;
+        $.ajax({
+          url: '/apps/apps_category',
+          headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+          type: 'POST',
+          data: params,
+          success: function(res) {
+            _self.appsList = res.data
+          }
+        })
+      }
+    },
+
+    mounted() {
+      this.showAppsList();
+    }
+  });
+</script>

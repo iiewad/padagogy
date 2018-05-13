@@ -1,4 +1,4 @@
-ActiveAdmin.register Comment, as: "PadagogyComment" do
+ActiveAdmin.register GradeCategory do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -11,6 +11,7 @@ ActiveAdmin.register Comment, as: "PadagogyComment" do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  menu label: '评论'
 
+  menu label: '年级分类', parent: "分类"
+  permit_params :name, :describe
 end

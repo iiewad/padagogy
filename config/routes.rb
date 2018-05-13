@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :posts
   resources :comments
-  resources :apps
+  resources :apps do
+    collection do
+      post 'apps_category'
+      get 'category'
+    end
+  end
 end

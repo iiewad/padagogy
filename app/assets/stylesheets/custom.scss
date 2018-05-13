@@ -172,13 +172,27 @@ input {
 }
 
 /* app */
+.padagogy-category,
+.subject-category,
+.grade-category {
+  height: 30px;
+  .category li {
+    list-style: none;
+    float: left;
+    margin: 0 10px;
+    a {
+      &:hover {
+        color: #ffffff;
+        background: #337ab7;
+      }
+    }
+  }
+}
 .panel-body {
   border: 1px solid #eaeaea;
 }
 .app-lists {
   .app-item {
-    border-left: 1px solid #eaeaea;
-    border-bottom: 1px solid #eaeaea;
     .media {
       padding: 10px 0;
       .media-body {
