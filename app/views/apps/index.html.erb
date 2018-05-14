@@ -56,24 +56,22 @@
     <div class="app-lists row">
         <div class="app-item col-xs-4 col-md-4" v-for="item in appsList">
           <div class="media">
-            <a :href="'/apps/' + item.id" class="pull-left">
-              <img :src="item.logo" />
-            </a>
+            <div class="media-left media-middle">
+              <a :href="'/apps/' + item.id" class="pull-left">
+                <img :src="item.logo" />
+              </a>
+            </div>
             <div class="media-body">
               <h4 class="media-heading">
-                <%#= link_to app.name, app_path(app.id) %>
                 <a :href="'/apps/' + item.id">{{item.name}}</a>
               </h4>
               {{item.size}}
-              <!-- <p><%#= app.company %></p> -->
             </div>
           </div>
         </div>
     </div>
   </div>
 </div>
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 
 <script>
   Array.prototype.indexOf = function(val) {

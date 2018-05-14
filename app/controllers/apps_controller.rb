@@ -28,7 +28,7 @@ class AppsController < ApplicationController
   end
 
   def apps_category
-    apps = App.select(:id, :name, :logo, :size)
+    apps = App.select(:id, :name, :logo, :size, :company)
     if params['padagogy'].present?
       apps = apps.where(padagogy_category_id: params['padagogy'])
     end
