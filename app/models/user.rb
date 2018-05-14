@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :posts, dependent: :destroy
+  ratyrate_rater
 end
