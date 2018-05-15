@@ -1,8 +1,17 @@
-<div class="header clearfix">
-  <nav>
-    <ul class="nav nav-pills pull-right">
-      <%= raw render_navigation_bar %>
-    </ul>
-  </nav>
-  <h3 class="text-muted">Padagogy</h3>
-</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Padagogy', root_path, class: "navbar-brand" %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <%= raw render_navigation_bar %>
+        </ul>
+    </div><!--/.navbar-collapse -->
+</nav>

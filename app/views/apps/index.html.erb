@@ -1,60 +1,65 @@
 <% provide(:title, 'Apps') %>
-
-<div class="panel panel-default">
-  <div class="panel-body category-panel">
-    <div class="padagogy-category">
-      <ul class="category">
-        <li v-for="(item, index) in categoriesList.padagogy">
-          <a href="javascript:void(0);"
-             class="label label-default"
-             :class="{'label-primary': selectedCategoryId.padagogyCategory.includes(item.id)}"
-             @click="selectedCategory('padagogyCategory', item.id)"
-             :id="item.id"
-             >
-             {{item.name}}
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="subject-category">
-      <ul class="category">
-        <li v-for="(item, index) in categoriesList.subject">
-          <a href="javascript:void(0);"
-             class="label label-default"
-             :class="{'label-primary': selectedCategoryId.subjectCategory.includes(item.id)}"
-             @click="selectedCategory('subjectCategory', item.id)"
-             :id="item.id"
-             >
-             {{item.name}}
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="grade-category">
-      <ul class="category">
-        <li v-for="(item, index) in categoriesList.grade">
-          <a href="javascript:void(0);"
-             class="label label-default"
-             :class="{'label-primary': selectedCategoryId.gradeCategory.includes(item.id)}"
-             @click="selectedCategory('gradeCategory', item.id)"
-             :id="item.id"
-             >
-             {{item.name}}
-          </a>
-        </li>
-      </ul>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body category-panel">
+      <div class="padagogy-category">
+        目标
+        <ul class="category">
+          <li v-for="(item, index) in categoriesList.padagogy">
+            <a href="javascript:void(0);"
+               class="label label-default"
+               :class="{'label-primary': selectedCategoryId.padagogyCategory.includes(item.id)}"
+               @click="selectedCategory('padagogyCategory', item.id)"
+               :id="item.id"
+               >
+               {{item.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div class="subject-category">
+        科目
+        <ul class="category">
+          <li v-for="(item, index) in categoriesList.subject">
+            <a href="javascript:void(0);"
+               class="label label-default"
+               :class="{'label-primary': selectedCategoryId.subjectCategory.includes(item.id)}"
+               @click="selectedCategory('subjectCategory', item.id)"
+               :id="item.id"
+               >
+               {{item.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div class="grade-category">
+        年级
+        <ul class="category">
+          <li v-for="(item, index) in categoriesList.grade">
+            <a href="javascript:void(0);"
+               class="label label-default"
+               :class="{'label-primary': selectedCategoryId.gradeCategory.includes(item.id)}"
+               @click="selectedCategory('gradeCategory', item.id)"
+               :id="item.id"
+               >
+               {{item.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Apps</h3>
-  </div>
-  <div class="panel-body">
-    <div class="splite"></div>
-    <div class="app-lists row">
-        <div class="app-item col-xs-4 col-md-4" v-for="item in appsList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Apps</h3>
+    </div>
+    <div class="panel-body">
+      <div class="splite"></div>
+      <div class="app-lists row">
+        <div class="app-item col-xs-6 col-md-3" v-for="item in appsList">
           <div class="media">
             <div class="media-left media-middle">
               <a :href="'/apps/' + item.id" class="pull-left">
@@ -69,8 +74,11 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
+
+  <%= render 'layouts/footer' %>
 </div>
 
 <script>

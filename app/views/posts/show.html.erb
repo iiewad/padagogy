@@ -1,26 +1,27 @@
 <% provide(:title, @post.title) %>
-<div class="cover-img"><%= image_tag @post.cover.url %></div>
+<div class="container">
+  <div class="cover-img"><%= image_tag @post.cover.url, class: 'img-responsive' %></div>
+  <div class="blog-post">
+    <h2 class="blog-post-title"><%= @post.title %></h2>
+    <p class="blog-post-meta"><%= formate_date(@post.created_at) %> <%= link_to @post.user.nickname, '#' %></p>
+    <p><%= @post.summary %></p>
+    <hr>
+    <%= raw @post.body %>
+  </div>
 
-<div class="blog-post">
-  <h2 class="blog-post-title"><%= @post.title %></h2>
-  <p class="blog-post-meta"><%= formate_date(@post.created_at) %> <%= link_to @post.user.nickname, '#' %></p>
-  <p><%= @post.summary %></p>
-  <hr>
-  <%= raw @post.body %>
+  <nav>
+    <ul class="pager">
+      <% if @post.previous.present? && @post.next.present? %>
+        <li><%= link_to "上一篇", post_path(@post.previous.id) %></li>
+        <li><%= link_to "下一篇", post_path(@post.next.id) %></li>
+      <% elsif @post.previous.present? %>
+        <li><%= link_to "上一篇", post_path(@post.previous.id) %></li>
+      <% elsif @post.next.present? %>
+        <li><%= link_to "下一篇", post_path(@post.next.id) %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <%= render partial: "comments/template", locals: {commentable: @post, new_comment: @new_comment} %>
+
 </div>
-
-<nav>
-  <ul class="pager">
-    <% if @post.previous.present? && @post.next.present? %>
-      <li><%= link_to "上一篇", post_path(@post.previous.id) %></li>
-      <li><%= link_to "下一篇", post_path(@post.next.id) %></li>
-    <% elsif @post.previous.present? %>
-      <li><%= link_to "上一篇", post_path(@post.previous.id) %></li>
-    <% elsif @post.next.present? %>
-      <li><%= link_to "下一篇", post_path(@post.next.id) %></li>
-    <% end %>
-  </ul>
-</nav>
-
-<%= render partial: "comments/template", locals: {commentable: @post, new_comment: @new_comment} %>
-
