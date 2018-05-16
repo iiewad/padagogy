@@ -1,8 +1,9 @@
 <% provide(:title, @post.title) %>
 <div class="container">
-  <div class="cover-img"><%= image_tag @post.cover.url, class: 'img-responsive' %></div>
-  <div class="blog-post">
-    <h2 class="blog-post-title"><%= @post.title %></h2>
+
+    <div class="blog-post">
+        <div class="cover-img"><%= image_tag @post.cover.url, class: 'img-responsive' %></div>
+        <h2 class="blog-post-title"><%= @post.title %></h2>
     <p class="blog-post-meta"><%= formate_date(@post.created_at) %> <%= link_to @post.user.nickname, '#' %></p>
     <p><%= @post.summary %></p>
     <hr>

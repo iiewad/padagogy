@@ -37,11 +37,12 @@ input {
     }
   }
 }
-.cover-img {
-  text-align: center;
-}
-
 .blog-post {
+  .cover-img {
+    img {
+      margin: 0 auto;
+    }
+  }
   margin-bottom: 60px;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
