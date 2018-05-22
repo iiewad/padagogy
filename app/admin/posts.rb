@@ -22,7 +22,7 @@ ActiveAdmin.register Post do
 
   form do |f|
     f.inputs do
-      f.input :user, :as => :select
+      f.input :user, :as => :select, :collection => User.pluck(:nickname, :id)
       f.input :title
       f.input :status, :as => :radio
       f.input :cover, :as => :file, :hint => f.image_tag(f.object.cover.url)
