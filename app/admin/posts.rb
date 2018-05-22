@@ -1,6 +1,6 @@
 ActiveAdmin.register Post do
   menu label: "文章"
-  permit_params :user, :title, :summary, :cover, :status, :body
+  permit_params :user_id, :title, :summary, :cover, :status, :body
 
   scope :normal
   scope :hot
@@ -26,6 +26,7 @@ ActiveAdmin.register Post do
       f.input :title
       f.input :status, :as => :radio
       f.input :cover, :as => :file, :hint => f.image_tag(f.object.cover.url)
+      f.input :summary, :as => :text, :input_html => {rows: 5, cols: 15}
       f.input :body, :as => :ckeditor
     end
     f.actions
