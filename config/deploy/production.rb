@@ -6,9 +6,16 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+#server "118.24.154.240:8868", user: "deployer", roles: %w(app db web)
+server "118.24.153.134:2018", user: "ubuntu", roles: %w(app db web)
 
+set :application, "padagogy_web"
 
+set :deploy_to, "/home/wwwroot/padagogy_web"
 
+set :user, "ubuntu"
+
+set :puma_conf, "#{shared_path}/config/puma.rb"
 # role-based syntax
 # ==================
 
@@ -59,3 +66,8 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+set :ssh_options, {
+  keys: %w(~/.ssh/id_rsa),
+  forward_agent: true,
+  auth_methods: %w(publickey password)
+}

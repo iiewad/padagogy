@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.7.1"
 
-set :application, "padagogy_staging"
+set :application, "padagogy_web"
 set :repo_url, "git@github.com:iiewad/padagogy.git"
 
 # Default branch is :master
@@ -58,5 +58,5 @@ namespace :deploy do
   end
 end
 
-after 'deploy', 'deploy:restart'
+#after 'deploy', 'deploy:restart'
 
