@@ -16,6 +16,7 @@ set :deploy_to, "/home/wwwroot/padagogy_web"
 set :user, "ubuntu"
 
 set :puma_conf, "#{shared_path}/config/puma.rb"
+set :default_env, { 'NODE_ENV' => 'production' }
 # role-based syntax
 # ==================
 

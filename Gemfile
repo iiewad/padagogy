@@ -84,6 +84,8 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
   gem 'sshkit-sudo'
+  gem 'capistrano-nvm', require: false
+  gem 'capistrano-yarn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

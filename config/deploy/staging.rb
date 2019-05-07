@@ -31,7 +31,7 @@ server "118.24.154.240:8868", user: "deployer", roles: %w(app db web)
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-
+set :default_env, { 'NODE_ENV' => 'staging' }
 
 # Custom SSH Options
 # ==================
